@@ -10,7 +10,7 @@ const addLocalStorage = (value) => {
   localStorage.setItem("tasks", JSON.stringify(value));
 };
 
-let appendFunction = (taskValue) => {
+let addToUi = (taskValue) => {
   const liElement = document.createElement("li");
   liElement.setAttribute("data-id", taskValue.id);
   const todoSpan = document.createElement("span");
@@ -79,7 +79,7 @@ addTaskButton.addEventListener("click", (e) => {
     const todoStructure = todoObjectStructure(taskValue);
     const currentTasks = getLocalStorageData();
     currentTasks.push(todoStructure);
-    appendFunction(todoStructure);
+    addToUi(todoStructure);
     addLocalStorage(currentTasks);
     inputField.value = "";
   }
@@ -89,7 +89,7 @@ const uiLoad = () => {
   const storageData = getLocalStorageData();
 
   storageData.map((data) => {
-    appendFunction(data);
+    addToUi(data);
   });
 };
 
